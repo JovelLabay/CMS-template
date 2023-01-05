@@ -20,7 +20,7 @@ import ListItemText from '@mui/material/ListItemText';
 
 import TransactionNavigation from '../components/navigations/transactionsNavigation';
 import SettingsNavigation from '../components/navigations/settingsNavigation';
-import RoutesNavigation from '../components/navigations/RoutesNavigation';
+import OperationsNavigation from '../components/navigations/operationsNavigation';
 
 const drawerWidth = 250;
 
@@ -130,7 +130,9 @@ function NavigationLayout({ children }: { children: ReactNode }) {
             ML Loans Platform v2.0
           </Typography>
         </DrawerHeader>
-        <RoutesNavigation open={open} />
+        <TransactionNavigation open={open} />
+        <OperationsNavigation open={open} />
+        <SettingsNavigation open={open} />
       </Drawer>
 
       {/* MAIN CONTENTS */}
