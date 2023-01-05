@@ -53,6 +53,7 @@ function SettingsNavigation({ open }: { open: boolean }) {
             <ListItemButton
               key={index}
               sx={{
+                pl: 4,
                 color: 'white',
               }}
             >

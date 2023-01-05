@@ -1,28 +1,23 @@
-import React, { ReactNode } from 'react';
+// REACT
+import React, { ReactNode, useContext } from 'react';
 
-import { styled, useTheme, Theme, CSSObject } from '@mui/material/styles';
-import Box from '@mui/material/Box';
+// CONTEXT STORE
+import { globalContextStore as Context } from '@/src/context/context';
+
+// MATERIAL UI
+import { styled, Theme, CSSObject } from '@mui/material/styles';
+import { Box, Typography, Toolbar, IconButton } from '@mui/material';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import CssBaseline from '@mui/material/CssBaseline';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
+import { Menu, ChevronLeft } from '@mui/icons-material';
 
+// LAYOUTS
 import TransactionNavigation from '@/src/components/navigations/transactionsNavigation';
 import SettingsNavigation from '@/src/components/navigations/settingsNavigation';
 import OperationsNavigation from '@/src/components/navigations/operationsNavigation';
+import AppBarLayout from '@/src/layouts/appBarLayout';
 
-const drawerWidth = 250;
+const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
   backgroundColor: '#C01F0E',
@@ -95,52 +90,52 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 function NavigationLayout({ children }: { children: ReactNode }) {
+  const globalContextStore = useContext(Context);
   const [open, setOpen] = React.useState(true);
 
   return (
-    <Box sx={{ display: 'flex', backgroundColor: '#f6f6f6' }}>
-      {/* APP BAR CONTAINER */}
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            edge="start"
-            sx={{
-              marginRight: 5,
-              color: 'black',
-            }}
-            onClick={togglerHanler}
-          >
-            {open ? <ChevronLeftIcon /> : <MenuIcon />}
-          </IconButton>
+    <Context.Provider value={'Jovel Labay'}>
+      <Box sx={{ display: 'flex', backgroundColor: '#f6f6f6' }}>
+        {/* APP BAR CONTAINER */}
+        <AppBar position="fixed" open={open}>
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              edge="start"
+              sx={{
+                marginRight: 5,
+                color: 'black',
+              }}
+              onClick={togglerHanler}
+            >
+              {open ? <ChevronLeft /> : <Menu />}
+            </IconButton>
 
-          {!open && (
-            <Typography variant="h6" noWrap component="div" color={'black'}>
+            {/* APP BAR */}
+            <AppBarLayout open={open} />
+          </Toolbar>
+        </AppBar>
+
+        {/* ROUTES COMPONENTS */}
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader>
+            <Typography variant="h6" noWrap component="div" color="white">
               ML Loans Platform v2.0
             </Typography>
-          )}
-        </Toolbar>
-      </AppBar>
+          </DrawerHeader>
+          <TransactionNavigation open={open} />
+          <OperationsNavigation open={open} />
+          <SettingsNavigation open={open} />
+        </Drawer>
 
-      {/* ROUTES COMPONENTS */}
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <Typography variant="h6" noWrap component="div" color="white">
-            ML Loans Platform v2.0
-          </Typography>
-        </DrawerHeader>
-        <TransactionNavigation open={open} />
-        <OperationsNavigation open={open} />
-        <SettingsNavigation open={open} />
-      </Drawer>
-
-      {/* MAIN CONTENTS */}
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-        {children}
+        {/* MAIN CONTENTS */}
+        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <DrawerHeader />
+          {children}
+        </Box>
       </Box>
-    </Box>
+    </Context.Provider>
   );
 
   // HANDLERS

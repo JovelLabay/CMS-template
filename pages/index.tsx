@@ -2,6 +2,7 @@ import Head from 'next/head';
 
 import Button from '@mui/material/Button';
 import { ReactElement } from 'react';
+import Login from '@/src/components/login/login';
 
 export default function Home() {
   return (
@@ -13,8 +14,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="">
-        <h1>Login Page</h1>
+      <main className="bg-neutral-100 flex justify-center items-center min-h-screen">
+        <Login />
       </main>
     </>
   );

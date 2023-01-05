@@ -27,6 +27,7 @@ function OperationsNavigation({ open }: { open: boolean }) {
         <ListItemButton
           key={index}
           sx={{
+            pl: 2,
             color: 'white',
           }}
         >
