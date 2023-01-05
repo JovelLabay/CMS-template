@@ -1,5 +1,6 @@
+import Navigation from '@/src/layouts/navigationLayout';
 import Head from 'next/head';
-import React from 'react';
+import React, { ReactElement } from 'react';
 
 export default function dashboard() {
   return (
@@ -11,7 +12,36 @@ export default function dashboard() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen flex justify-center items-center">
+      <main className="bg-[#fff] rounded-md p-5">
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
+        <h1>Dashboard</h1>
         <h1>Dashboard</h1>
       </main>
     </>

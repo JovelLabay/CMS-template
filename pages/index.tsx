@@ -1,6 +1,7 @@
 import Head from 'next/head';
 
 import Button from '@mui/material/Button';
+import { ReactElement } from 'react';
 
 export default function Home() {
   return (
@@ -12,9 +13,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="min-h-screen flex justify-center items-center">
+      <main className="">
         <h1>Login Page</h1>
       </main>
     </>
   );
 }
+
+Home.getLayout = function PageLayout(page: ReactElement) {
+  return <>{page}</>;
+};

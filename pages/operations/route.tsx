@@ -12,7 +12,7 @@ export default function route() {
       </Head>
 
       <main className="min-h-screen flex justify-center items-center">
-        <h1>Dashboard</h1>
+        <h1>route</h1>
       </main>
     </>
   );
