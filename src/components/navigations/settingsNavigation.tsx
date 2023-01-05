@@ -15,7 +15,12 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import React from 'react';
 import { settings, transactions } from '@/src/data/staticData';
-import { BarChart } from '@mui/icons-material';
+import {
+  BarChart,
+  KeyboardArrowDown,
+  KeyboardArrowLeft,
+  Settings,
+} from '@mui/icons-material';
 
 function SettingsNavigation({ open }: { open: boolean }) {
   const [open2, setOpen] = React.useState(false);
@@ -23,32 +28,44 @@ function SettingsNavigation({ open }: { open: boolean }) {
   const handleClick = () => {
     setOpen(!open2);
   };
+
   return (
     <List>
-      {transactions.map((text, index) => (
-        <ListItemButton key={index}>
-          <ListItemIcon>
-            <BarChart />
-          </ListItemIcon>
-          <ListItemText primary="Sent mail" />
-        </ListItemButton>
-      ))}
-
-      <ListItemButton onClick={handleClick}>
-        <ListItemIcon>
-          <InboxIcon />
+      <ListItemButton
+        onClick={handleClick}
+        sx={{
+          color: 'white',
+        }}
+      >
+        <ListItemIcon
+          sx={{
+            color: 'white',
+          }}
+        >
+          <Settings />
         </ListItemIcon>
-        <ListItemText primary="Inbox" />
-        {open2 ? <BarChart /> : <BarChart />}
+        <ListItemText primary="Settings" />
+        {open2 ? <KeyboardArrowDown /> : <KeyboardArrowLeft />}
       </ListItemButton>
       <Collapse in={open2} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItemButton sx={{ pl: 4 }}>
-            <ListItemIcon>
-              <BarChart />
-            </ListItemIcon>
-            <ListItemText primary="Starred" />
-          </ListItemButton>
+          {settings.map((text, index) => (
+            <ListItemButton
+              key={index}
+              sx={{
+                color: 'white',
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  color: 'white',
+                }}
+              >
+                <BarChart />
+              </ListItemIcon>
+              <ListItemText primary={text.name} />
+            </ListItemButton>
+          ))}
         </List>
       </Collapse>
     </List>

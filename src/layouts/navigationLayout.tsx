@@ -18,9 +18,9 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
-import TransactionNavigation from '../components/navigations/transactionsNavigation';
-import SettingsNavigation from '../components/navigations/settingsNavigation';
-import OperationsNavigation from '../components/navigations/operationsNavigation';
+import TransactionNavigation from '@/src/components/navigations/transactionsNavigation';
+import SettingsNavigation from '@/src/components/navigations/settingsNavigation';
+import OperationsNavigation from '@/src/components/navigations/operationsNavigation';
 
 const drawerWidth = 250;
 

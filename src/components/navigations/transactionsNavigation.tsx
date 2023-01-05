@@ -18,33 +18,21 @@ function TransactionsNavigation({ open }: { open: boolean }) {
   return (
     <List>
       {transactions.map((text, index) => (
-        <ListItem
-          key={text.id}
-          disablePadding
-          sx={{ display: 'block' }}
-          onClick={() => router.push('/operations/route')}
+        <ListItemButton
+          key={index}
+          sx={{
+            color: 'white',
+          }}
         >
-          <ListItemButton
+          <ListItemIcon
             sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 2.5,
               color: 'white',
             }}
           >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : 'auto',
-                justifyContent: 'center',
-                color: 'white',
-              }}
-            >
-              {index % 2 === 0 ? <BarChart /> : <MailIcon />}
-            </ListItemIcon>
-            <ListItemText primary={text.name} sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-        </ListItem>
+            <BarChart />
+          </ListItemIcon>
+          <ListItemText primary={text.name} />
+        </ListItemButton>
       ))}
     </List>
   );
