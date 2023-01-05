@@ -1,7 +1,6 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -9,4 +8,97 @@ generator client {
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Branches {
+  kpx_branch_id     Int      @unique
+  areas             Areas    @relation(fields: [kpx_area_id], references: [kpx_area_id])
+  kpx_area_id       Int
+  code              String?
+  branch_name       String
+  branch_address    String?  @db.Text
+  type              String?
+  processing_branch Int?
+  mac_ip_address    String?
+  operating_hrs     String?
+  cellphone_num     String?
+  telephone_num     String?
+  email             String?
+  or_series_num     String?
+  tin_num           String?  @db.Text
+  status            String?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+  isDeleted         Boolean  @default(false)
+  Users             Users[]
+}
+
+model Areas {
+  kpx_area_id   Int        @unique
+  regions       Regions    @relation(fields: [kpx_region_id], references: [kpx_region_id])
+  kpx_region_id Int
+  name          String
+  code          String
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+  Branches      Branches[]
+}
+
+model Regions {
+  kpx_region_id Int      @unique
+  zones         Zones    @relation(fields: [kpx_zone_id], references: [kpx_zone_id])
+  kpx_zone_id   Int
+  name          String
+  code          String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  Area          Areas[]
+}
+
+model Zones {
+  kpx_zone_id Int       @unique
+  name        String
+  code        String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  Regions     Regions[]
+}
+
+model Users {
+  id                   Int      @id @default(autoincrement())
+  kpx_resourceIdNumber String
+  branches             Branches @relation(fields: [kpx_branch_id], references: [kpx_branch_id])
+  kpx_branch_id        Int
+  email                String
+  username             String
+  password             String
+  first_name           String
+  middle_name          String
+  last_name            String
+  suffix               Int      @db.TinyInt
+  contact_number       String
+  status               String
+  roles                String   @db.Text
+  isLocked             Int      @db.TinyInt
+  status_formatted     String
+  createdAt            DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+  isDeleted            Boolean  @default(false)
+}
+
+model Sync_Reports {
+  id        Int      @id @default(autoincrement())
+  modules   Modules  @relation(fields: [module_id], references: [id])
+  module_id Int
+  status    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Modules {
+  id           Int            @id @default(autoincrement())
+  module_name  String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  Sync_Reports Sync_Reports[]
 }
