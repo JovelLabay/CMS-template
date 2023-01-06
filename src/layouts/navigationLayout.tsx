@@ -121,7 +121,7 @@ function NavigationLayout({ children }: { children: ReactNode }) {
         <Drawer variant="permanent" open={open}>
           <DrawerHeader>
             <Typography variant="h6" noWrap component="div" color="white">
-              ML Loans Platform v2.0
+              ML Jewellers v1.0
             </Typography>
           </DrawerHeader>
           <TransactionNavigation open={open} />

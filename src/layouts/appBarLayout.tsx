@@ -27,7 +27,7 @@ function AppBarLayout({ open }: { open: boolean }) {
       <div>
         {!open && (
           <Typography variant="h6" noWrap component="div" color={'black'}>
-            ML Loans Platform v2.0
+            ML Jewellers v1.0
           </Typography>
         )}
       </div>
