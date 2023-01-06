@@ -22,7 +22,7 @@ function Login() {
       />
       <div className="flex flex-col items-center gap-10 mt-5">
         <h1 className="font-bold text-center text-h1Font">
-          ML Loans Platform v2.0 Login
+          ML Jewellers v1.0 Login
         </h1>
 
         <button

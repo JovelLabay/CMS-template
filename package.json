@@ -14,8 +14,10 @@
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@headlessui/react": "^1.7.7",
     "@mui/icons-material": "^5.11.0",
     "@mui/material": "^5.11.3",
+    "@mui/x-data-grid": "^5.17.18",
     "@next/font": "13.1.1",
     "@prisma/client": "^4.8.0",
     "@types/react": "18.0.26",
